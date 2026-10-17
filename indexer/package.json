@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
     "start": "tsx src/index.ts",
     "dev": "tsx watch src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No unit tests specified for indexer\" && exit 0"
   },
   "keywords": [],
   "author": "",

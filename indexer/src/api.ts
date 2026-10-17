@@ -222,7 +222,7 @@ apiRouter.get("/verifiers", (req: Request, res: Response) => {
  */
 apiRouter.get("/addresses/:address/portfolio", (req: Request, res: Response) => {
   try {
-    const addr = req.params.address;
+    const addr = String(req.params.address);
     const balances = dbOps.getBalancesForAccount(addr);
     const myProjects = dbOps.getProjects().filter((p) => p.developer.toLowerCase() === addr.toLowerCase());
     const myListings = dbOps.getActiveListings().filter((l) => l.seller.toLowerCase() === addr.toLowerCase());
@@ -245,7 +245,7 @@ apiRouter.get("/addresses/:address/portfolio", (req: Request, res: Response) => 
  * Mock IPFS gateway serving realistic project design documents and auditor validation summaries
  */
 apiRouter.get("/documents/:cid", (req: Request, res: Response) => {
-  const cid = req.params.cid;
+  const cid = String(req.params.cid);
   const docs: Record<string, any> = {
     "tumucumaque-pdd": {
       title: "Project Design Document (PDD) - Tumucumaque Mountains National Park REDD+",

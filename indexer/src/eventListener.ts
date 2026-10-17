@@ -480,7 +480,7 @@ export class CarbonVaultEventListener {
       const lId = Number(listingId);
       const listing = dbOps.getListing(lId);
       const bId = listing?.batch_id || 0;
-      const paymentToken = listing?.paymentToken || listing?.payment_token || ethers.ZeroAddress;
+      const paymentToken = listing?.payment_token || ethers.ZeroAddress;
       const qtyTonnes = parseTonnesFromRaw(quantity);
       const priceFormatted = parsePriceFromRaw(totalPrice, paymentToken);
       const ts = Number(timestamp);

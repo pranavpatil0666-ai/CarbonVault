@@ -26,22 +26,22 @@ async function main() {
     const vRec = await projectRegistry.getVerification(id);
     console.log(`  - Project #${id}: "${p.name}"`);
     console.log(`      Registry: ${p.externalRegistry}:${p.externalProjectId} | Country: ${p.country}`);
-    console.log(`      Status: ${statusNames[p.status]} | Approved Cap: ${vRec.estimatedMaxTonnes.toLocaleString()} tCO2e`);
+    console.log(`      Status: ${statusNames[Number(p.status)]} | Approved Cap: ${vRec.estimatedMaxTonnes.toLocaleString()} tCO2e`);
   }
 
   // 3. CreditRegistry
   const creditRegistry = await ethers.getContractAt("CreditRegistry", deployments.creditRegistry);
-  const batchCount = await creditRegistry.getBatchCount();
+  const batchCount = await creditRegistry.batchCount();
   console.log(`\n[CreditRegistry] Total Issued Batches: ${batchCount}`);
   for (let id = 1; id <= Number(batchCount); id++) {
     const b = await creditRegistry.getBatch(id);
     console.log(`  - Batch Token #${id}: Project #${b.projectId}, Vintage ${b.vintage}`);
-    console.log(`      Quantity Issued: ${b.quantity.toLocaleString()} t | Serials: ${b.serialNumberStart} -> ${b.serialNumberEnd}`);
+    console.log(`      Quantity Issued: ${b.quantityIssued.toLocaleString()} t | Serials: ${b.serialNumberStart} -> ${b.serialNumberEnd}`);
   }
 
   // 4. Marketplace
   const marketplace = await ethers.getContractAt("Marketplace", deployments.marketplace);
-  const listingCount = await marketplace.getListingCount();
+  const listingCount = await marketplace.listingCount();
   console.log(`\n[Marketplace] Total Listings Created: ${listingCount}`);
   for (let id = 1; id <= Number(listingCount); id++) {
     const l = await marketplace.getListing(id);
@@ -50,7 +50,7 @@ async function main() {
 
   // 5. RetirementManager
   const retirementManager = await ethers.getContractAt("RetirementManager", deployments.retirementManager);
-  const retirementCount = await retirementManager.getRetirementCount();
+  const retirementCount = await retirementManager.totalRetirements();
   console.log(`\n[RetirementManager] Total Retirement Certificates: ${retirementCount}`);
   for (let id = 1; id <= Number(retirementCount); id++) {
     const r = await retirementManager.getCertificate(id);

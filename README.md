@@ -1,5 +1,7 @@
 # CarbonVault: Auditable On-Chain Carbon Credit Lifecycle Protocol
 
+[![CI/CD Pipeline](https://github.com/pranavpatil0666-ai/CarbonVault/actions/workflows/ci.yml/badge.svg)](https://github.com/pranavpatil0666-ai/CarbonVault/actions/workflows/ci.yml)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Live%20App-000000?logo=vercel)](https://frontend-snowy-ten-19.vercel.app)
 [![Solidity](https://img.shields.io/badge/Solidity-^0.8.24-363636?logo=solidity)](https://soliditylang.org/)
 [![Hardhat](https://img.shields.io/badge/Built%20with-Hardhat-yellow?logo=ethereum)](https://hardhat.org/)
 [![OpenZeppelin](https://img.shields.io/badge/OpenZeppelin-Contracts%20v5-4E5EE4?logo=openzeppelin)](https://openzeppelin.com/)
