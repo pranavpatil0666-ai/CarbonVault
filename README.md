@@ -63,32 +63,32 @@ flowchart TD
     end
 
     %% Lifecycle Connections
-    Dev -->|1. Register Project| PR
-    Dev -.->|Upload PDD Document| IPFS
-    IPFS -.->|Content CID| PR
+    Dev -->|"1. Register Project"| PR
+    Dev -.->|"Upload PDD Document"| IPFS
+    IPFS -.->|"Content CID"| PR
 
-    Auditor -->|2. Verify & Set Max Cap| PR
-    Auditor -.->|Upload Audit Report| IPFS
-    VR -.->|Validate Verifier Role| PR
+    Auditor -->|"2. Verify & Set Max Cap"| PR
+    Auditor -.->|"Upload Audit Report"| IPFS
+    VR -.->|"Validate Verifier Role"| PR
 
-    Dev -->|3. Issue Batch (<= Cap)| CR
-    PR -.->|Check Cap & Active Status| CR
+    Dev -->|"3. Issue Batch within Verified Cap"| CR
+    PR -.->|"Check Cap & Active Status"| CR
 
-    Trader -->|4. List & Trade Batches| MP
-    CR -.->|Lock Escrow Approval| MP
+    Trader -->|"4. List & Trade Batches"| MP
+    CR -.->|"Lock Escrow Approval"| MP
 
-    Retiree -->|5. Retire & Burn Tokens| RM
-    RM -->|Permanently Burn| CR
+    Retiree -->|"5. Retire & Burn Tokens"| RM
+    RM -->|"Permanently Burn"| CR
 
     %% Indexer Connections
-    EVM -.->|EVM Logs & State Events| Sync
+    EVM -.->|"EVM Logs & State Events"| Sync
     Sync --> DB
     DB --> API
     API --> Frontend
 
     %% Public Auditor Access
-    AuditorPub -->|Audit Provenance Without Wallet| Dash
-    AuditorPub -->|Inspect Certificate| PCert
+    AuditorPub -->|"Audit Provenance Without Wallet"| Dash
+    AuditorPub -->|"Inspect Certificate"| PCert
 ```
 
 ### Complete Lifecycle State Transitions
